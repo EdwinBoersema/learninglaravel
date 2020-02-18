@@ -9,6 +9,6 @@
 <body>
     <h1>My posts</h1>
 
-    <div>{{ $post }}</div>
+    <div>{{ $post->body }}</div>
 </body>
 </html>

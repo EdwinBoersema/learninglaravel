@@ -6,15 +6,12 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function show($post)
+    public function show($slug)
     {
-        $posts = [
-            'my-first-post' => 'Hello this is my first post!',
-            'my-second-post' => 'This is my second post'
-        ];
+        $post = \DB::table('posts')->where('slug', $slug)->first();
         
         return view('post', [
-            'post' => $posts[$post]
+            'post' => $post
         ]);
     }
 }
