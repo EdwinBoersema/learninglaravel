@@ -19,11 +19,11 @@ Route::get('/home', function() {
 // dynamic route
 Route::get('posts/{post}', 'PostController@show');
 
-// default Route
-Route::get('/', function () {
-    
-    return view('test', [
-        'name' => request('name')
-    ]);
+Route::get('/test', function () {
+    return view('test');
 });
 
+// default Route
+Route::get('/', function () {
+    return view('welcome');
+});
