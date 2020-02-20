@@ -11,24 +11,11 @@
 |
 */
 
-// home Route
-Route::get('/simple', function () {
-    return view('simple.home', [
-        'articles' => App\article::latest()->get()
-    ]);
-});
-
 // about Route
-Route::get('/simple/about', function() {
+Route::get('/about', function() {
     
     return view('simple.about');
 });
-
-// all articles Route
-Route::get('simple/articles', 'ArticleController@showAll');
-
-// show article
-Route::get('/simple/article/{article}', 'ArticleController@show');
 
 // default Route
 Route::get('/', function () {
@@ -36,3 +23,20 @@ Route::get('/', function () {
         'articles' => App\article::latest()->get()
     ]);
 });
+
+// ARTICLES
+// index
+Route::get('/articles', 'ArticleController@showAll');
+
+// create article
+Route::get('/articles/create', 'ArticleController@create');
+
+Route::post('/articles', 'ArticleController@store');
+
+// show article
+Route::get('/articles/{article}', 'ArticleController@show');
+
+// edit article
+Route::get('/articles/{article}/edit', 'ArticleController@edit');
+
+Route::put('/articles/{article}', 'ArticleController@update');

@@ -7,7 +7,11 @@
 	<div id="page" class="container">
 		@foreach ($articles as $article)
 			<div>
-				<div class="title"><h2>{{ $article->title }}</h2></div>
+				<div class="title">
+					<h2>
+						<a href="/articles/{{$article->id}}">{{ $article->title }}</a>
+					</h2>
+				</div>
 				<p>{{ $article->content }}</p>
 			</div>
 		@endforeach
