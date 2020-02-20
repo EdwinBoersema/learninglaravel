@@ -11,14 +11,6 @@
 |
 */
 
-
-Route::get('/home', function() {
-    return view('home');
-});
-
-// dynamic route
-Route::get('/posts/{post}', 'PostController@show');
-
 // home Route
 Route::get('/simple', function () {
     return view('simple.home', [
@@ -38,8 +30,9 @@ Route::get('simple/articles', 'ArticleController@showAll');
 // show article
 Route::get('/simple/article/{article}', 'ArticleController@show');
 
-
 // default Route
 Route::get('/', function () {
-    return view('welcome');
+    return view('simple.home', [
+        'articles' => App\article::latest()->get()
+    ]);
 });
