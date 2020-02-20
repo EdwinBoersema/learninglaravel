@@ -19,7 +19,7 @@
 				@foreach ($articles as $article)
 					<li class="first">
 					<h3>{{ $article->title }}</h3>
-					<p><a href="/simple/article/{{$article->id}}">{{$article->content}}</a></p>
+					<p><a href="/articles/{{$article->id}}">{{$article->content}}</a></p>
 				</li>
 				@endforeach
 
