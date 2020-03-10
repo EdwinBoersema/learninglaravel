@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 // ARTICLES
 // index
-Route::get('/articles', 'ArticleController@showAll');
+Route::get('/articles', 'ArticleController@showAll')->name('articles.index');
 
 // create article
 Route::get('/articles/create', 'ArticleController@create');
@@ -34,7 +34,7 @@ Route::get('/articles/create', 'ArticleController@create');
 Route::post('/articles', 'ArticleController@store');
 
 // show article
-Route::get('/articles/{article}', 'ArticleController@show');
+Route::get('/articles/{article}', 'ArticleController@show')->name('articles.show');
 
 // edit article
 Route::get('/articles/{article}/edit', 'ArticleController@edit');

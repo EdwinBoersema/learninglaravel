@@ -16,8 +16,7 @@ class ArticleController extends Controller
     }
     
     // show article
-    public function show($id) {
-        $article = Article::find($id);
+    public function show(Article $article) {
 
         return view('simple.articles.show', [
             'article' => $article
@@ -25,46 +24,32 @@ class ArticleController extends Controller
     }
 
     // create article
-
     public function create() {
         return view('simple.articles.create');
     }
 
     public function store() {
-        \request()->validate([
+        Article::create($this->validateArticle());
+
+        return redirect('articles');
+    }
+
+    // edit article
+    public function edit(Article $article) {
+
+        return view('simple.articles.edit', compact('article'));
+    }
+
+    public function update(Article $article) {
+        $article->update($this->validateArticle());
+
+        return redirect($article->path());
+    }
+
+    protected function validateArticle() {
+        return request()->validate([
             'title' => 'required',
             'content' => 'required'
         ]);
-
-        $article = new Article();
-
-        $article->title = request('title');
-        $article->content = request('content');
-
-        $article->save();
-
-        return \redirect('articles');
-    }
-
-    public function edit($id) {
-        $article = Article::find($id);
-
-        return \view('simple.articles.edit', compact('article'));
-    }
-
-    public function update($id) {
-        \request()->validate([
-            'title' => 'required',
-            'content' => 'required'
-        ]);
-
-        $article = Article::find($id);
-
-        $article->title = request('title');
-        $article->content = request('content');
-
-        $article->save();
-
-        return \redirect('/articles/'. $article->id);
     }
 }
