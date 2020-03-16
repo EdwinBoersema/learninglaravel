@@ -7,49 +7,79 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    // show all articles
-    public function showAll() {
-
-        return view('simple.articles.index', [
-            'articles' => Article::get()
-        ]);
-    }
-    
-    // show article
-    public function show(Article $article) {
-
-        return view('simple.articles.show', [
-            'article' => $article
-        ]);
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
     }
 
-    // create article
-    public function create() {
-        return view('simple.articles.create');
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
-    public function store() {
-        Article::create($this->validateArticle());
-
-        return redirect('articles');
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
     }
 
-    // edit article
-    public function edit(Article $article) {
-
-        return view('simple.articles.edit', compact('article'));
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Article  $article
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Article $article)
+    {
+        //
     }
 
-    public function update(Article $article) {
-        $article->update($this->validateArticle());
-
-        return redirect($article->path());
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Article  $article
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Article $article)
+    {
+        //
     }
 
-    protected function validateArticle() {
-        return request()->validate([
-            'title' => 'required',
-            'content' => 'required'
-        ]);
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Article  $article
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Article $article)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Article  $article
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Article $article)
+    {
+        //
     }
 }
